@@ -1,31 +1,31 @@
-#include "main.h"
+#include "holberton.h"
+
 /**
-*_strspn - search the number of bytes in the initial
-* segment of s which consist only of bytes from accept
-*@s:segment targeted
-*@accept:reference bytes container
-*
-*Return:returns the number of bytes in the initial
-* segment of s which consist only of bytes from accept
-*/
+ * *_strspn - description
+ * @s: string
+ * @accept: pointer
+ * Return: int
+ */
+
+
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int bytes = 0;
-	int i;
+	int i, j, cmpt = 0;
 
-	while (*s)
+	for (i = 0; s[i] >= '\0'; i++)
 	{
-		for (i = 0; accept[i]; i++)
+		for (j = 0; accept[j] > '\0'; j++)
 		{
-			if (accept[i] == *s)
+			if (s[i] == accept[j])
 			{
-				bytes++;
+				cmpt++;
 				break;
 			}
-			else if ((accept[i + 1]) == '\0')
-				return (bytes);
 		}
-		s++;
+		if (accept[j] == '\0')
+		{
+			break;
+		}
 	}
-	return (bytes);
+	return (cmpt);
 }
