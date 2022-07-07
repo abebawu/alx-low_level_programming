@@ -1,22 +1,25 @@
-#include "variadic_functions.h"
+#include <stdio.h>
 #include <stdarg.h>
-/**
- * @n is the number of all integers                                                                                                     
- *
- *  *@.. variable number of parameters                                                                                                  
- *   *                                                                                                                              
- *    * retur if n==0                                                                                                                   
- *     * else return the sum of numbers                                                                                                
- *
- *      */                                                                                                                                                                                                                                                                 
-int sum_them_all(const unsigned int n, ...)                                                                                            
-{                                                                                                                                       
-	va_list number;                                                                                                                
-	unsigned int index , sum = 0;                                                                                                           	
-	va_start(number, n);                                                                                                                    
-	for (index=0; index<n; index++) 
-		 sum+= va_arg(number, int);                                                                                      
-	va_end(number);                                                                                                                         	
-	return (sum);                                                                                                                           
-}
 
+/**
+* sum_them_all - sum of all its parameters
+* @n: n args
+* Return: sum or if n == 0, return 0
+*/
+int sum_them_all(const unsigned int n, ...)
+{
+	int sum = 0;
+	unsigned int i;
+	va_list arguments;
+
+	if (n)
+	{
+		va_start(arguments, n);
+		for (i = 0; i < n; i++)
+		{
+			sum += va_arg(arguments, int);
+		}
+		va_end(arguments);
+	}
+	return (sum);
+}
